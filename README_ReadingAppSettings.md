@@ -102,3 +102,7 @@ The way in Azure Functions v1 was to read the settings as environment variables.
         log.LogInformation($"Value of BlobPath setting: '{blobPath}'");
     }
 	```
+
+Reading Settings Via the Options Pattern
+----------------------------------------
+See "The Options Pattern with Dependency Injection" section of [README_DependencyInjection.md](/README_DependencyInjection.md).
