@@ -16,4 +16,8 @@ When uploading a file to Blob Storage, in the Upload blob dialog expand the Adva
 
 Test it by uploading a file to the container setting 'Upload to folder' to the folder path (eg 'data/input-files').  The function should run.  Then do it again, either uploading to the container root or to a parent folder in the path (eg 'data').  This time the function should NOT run.
 
-NOTE: Having created the folder structure by uploading a file in the Azure Portal you can subsequently browse down from the root container to the folder containing the file and do an upload from there.  In that case the folder path is relative to the current folder so there is no need to set the 'Upload to folder' value.  Leave it blank and the file will be uploaded to the current folder.
+Notes
+-----
+1. While folders within a container are "virtual", they will appear in the Azure Portal just like "real" folders.  The only difference is they cannot be created empty; a folder is only created by uploading a file to it and only then will it become visible in the Azure Portal.  
+
+2. If you browse to a folder in the Azure Portal and upload a file from there the destination folder path will be relative to the current folder.  So if you were in folder 'data' and wanted to upload a file to 'data/input-files' you would set 'Upload to folder' to 'input-files', the destination path relative to the current folder.  Similarly, if you were in folder 'data/input-files' you would just leave 'Upload to folder' blank and the file would be uploaded to the current folder.

@@ -20,7 +20,7 @@ The Visual Studio project containing the Azure Function class represents the Fun
 In addition, when you publish your project you're publishing all the functions within it, not just a single function.
 
 ### local.settings.json and Git
-By default the local.settings.json file, containing the versions of the Application settings used when running locally in Visual Studio, is EXCLUDED from the Git repository by a local .gitignore file that generated automatically when the project is created in Visual Studio.
+By default the local.settings.json file, containing the versions of the Application settings used when running locally in Visual Studio, is EXCLUDED from the Git repository by a local .gitignore file that's generated automatically when the project is created in Visual Studio.
 
 ### Viewing Settings in the Azure Portal
 To view the Application settings browse to the Function App and, from the LH blade menu, Settings section, select Configuration.
@@ -81,7 +81,7 @@ Publishing the Function to Azure
 
 3. In the Publish tab > Hosting section click the Ellipsis button then select Manage Azure App Service Settings - the Application settings dialog will open;
 
-4. In the Application settings dialog there are two values for each setting - Local and Remote.  For the setting matching the connection string key (in this example AzureStorageConnectionString) put the cursor in the Remote textbox and click the 'Insert value from local' link to copy the value from the Local setting to the Remote one (NOTE: Local settings are read from local.settings.json, Remote settings are read from the settings of the Function App in Azure.  NOTE ALSO: By default local.settings.json is excluded from Git source control).  Once the connection string is copied to the Remote setting click OK - both the local.settings.json and the settings of the Function App in Azure will be updated then the dialog will close;
+4. In the Application settings dialog there are two values for each setting - Local and Remote.  For the setting matching the connection string key (in this example AzureStorageConnectionString) click the 'Insert value from local' link to copy the value from the Local setting to the Remote one (NOTE: Local settings are read from local.settings.json, Remote settings are read from the settings of the Function App in Azure.  NOTE ALSO: By default local.settings.json is excluded from Git source control).  Once the connection string is copied to the Remote setting click OK - both the local.settings.json and the settings of the Function App in Azure will be updated then the dialog will close;
 
 5. In the Publish tab click the Publish button.  The project will be built and then published to Azure.  This may take a few minutes.
 

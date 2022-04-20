@@ -30,7 +30,7 @@ To avoid hard-coding the BlobPath it can be added to the Application Settings.
 3. Copy the new settings from Local settings to Remote settings, via the Publish tab > Application settings dialog:
 	a. Open the Publish tab (Solution Explorer, right-click on project, select Publish);
 	b. In the Hosts section click the ellipsis button then select 'Manage Azure App Service settings' - the Application settings dialog will open;
-	c. In the Application settings dialog find the new setting, in this example 'BlobPath', set the cursor in the Remote textbox, then click the link 'Insert value from Local' to copy the value from the Local setting to the Remote one;
+	c. In the Application settings dialog find the new setting, in this example 'BlobPath', then click the link 'Insert value from Local' to copy the value from the Local setting to the Remote one;
 	d. Click OK to close the Application settings dialog and return to the Publish tab.
 
 4. Publish the update via the Publish tab > Publish button.
@@ -51,9 +51,7 @@ Reading from the Application Settings in the Function
 ### Reference:
 * Stackoverflow question "Reading settings from a Azure Function", https://stackoverflow.com/questions/43556311/reading-settings-from-a-azure-function
 
-The way in Azure Functions v2 is to read the settings via the ASP.NET Core Configuration system. 
-
-The way in Azure Functions v1 was to read the settings as environment variables.  For example:
+The way to read application settings in Azure Functions v1 was to read them as environment variables.  For example:
 
 	`var value = Environment.GetEnvironmentVariable("your_key_here");`
 
@@ -61,18 +59,24 @@ The way in Azure Functions v1 was to read the settings as environment variables.
 
 	`var value = Environment.GetEnvironmentVariable("your_key_here", EnvironmentVariableTarget.Process);`
 
+The way in Azure Functions v2 is to read the settings via the ASP.NET Core Configuration system. 
+
 ### Using the ASP.NET Core Configuration system to read settings
 1. Add a using statement: `using Microsoft.Extensions.Configuration;`
 
 2. Add the ExecutionContext to the Azure Function method.  For example, change the method signature from:
 
-	`public void Run([BlobTrigger("%BlobPath%/{name}", Connection = "AzureStorageConnectionString")]Stream myBlob, 
-            string name, ILogger log)`
+	```
+	public void Run([BlobTrigger("%BlobPath%/{name}", Connection = "AzureStorageConnectionString")]Stream myBlob, 
+            string name, ILogger log)
+	```
 
 	to	
 
-	`public void Run([BlobTrigger("%BlobPath%/{name}", Connection = "AzureStorageConnectionString")]Stream myBlob, 
-            string name, ILogger log, ExecutionContext context)`
+	```
+	public void Run([BlobTrigger("%BlobPath%/{name}", Connection = "AzureStorageConnectionString")]Stream myBlob, 
+            string name, ILogger log, ExecutionContext context)
+	```
 
 3. Add a method to get the IConfiguration Root.  For example:
 

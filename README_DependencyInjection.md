@@ -38,7 +38,7 @@ namespace BlobTrigger
 }
 ```
 
-2. Inject the interfaces into the Azure Function class (or in whichever other class they're needed):
+2. Inject the interfaces into the Azure Function class (or into whichever other class they're needed):
 
 ```
 using System.IO;
